@@ -3,6 +3,7 @@ set -e  # zakończ skrypt przy pierwszym błędzie
 
 chmod +x ./deploy.sh
 
+
 # 🔧 KONFIGURACJA
 APP_DIR="/var/www/website_www_portfolio/portfolio_web_app"
 PM2_NAME="nextjs-app"
