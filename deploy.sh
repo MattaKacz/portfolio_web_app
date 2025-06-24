@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e  # zakończ skrypt przy pierwszym błędzie
 
-
 chmod +x ./deploy.sh
 
 # 🔧 KONFIGURACJA
