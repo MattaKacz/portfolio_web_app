@@ -31,8 +31,7 @@ const HeroSection = () => {
 						/>
 					</h1>
 					<p className='text-[#ADB7BE] text-base sm:text-lg mb-6 lg:text-xl text-center lg:text-left'>
-						I'm a software developer. Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit.
+						Backend engineer specializing in Python, Django, and FastAPI. I build scalable systems and explore AI-powered tools to make them smarter - with a passion for clean code, automation, and robust testing.
 					</p>
 					<div className='flex flex-col sm:flex-row gap-4 mb-6 w-full sm:w-auto'>
 						<Link
