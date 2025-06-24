@@ -1,3 +1,5 @@
+name: 🚀 Deploy to Production Server
+
 on:
   workflow_run:
     workflows: ["✅ Check deploy.sh permission"]
