@@ -7,6 +7,10 @@ APP_DIR="/var/www/website_www_portfolio/portfolio_web_app"
 echo "📁 Moving to project directory: $APP_DIR"
 cd "$APP_DIR"
 
+echo "🧹 Cleaning up local changes..."
+git reset --hard
+git clean -fd
+
 echo "🔄 Pulling latest code from Git..."
 git pull origin main
 
