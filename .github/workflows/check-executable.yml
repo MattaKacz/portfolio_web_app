@@ -1,4 +1,4 @@
-name: ✅ Validate deploy.sh executable permission
+name: ✅ Check deploy.sh permission
 
 on:
   push:
