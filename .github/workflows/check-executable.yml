@@ -1,25 +1,22 @@
-name: Check executable permissions
+name: ✅ Validate deploy.sh executable permission
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
+    branches: [main]
 
 jobs:
-  check-deploy-permissions:
-    name: Ensure deploy.sh is executable
+  check-exec:
+    name: Check if deploy.sh is executable
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Check if deploy.sh is executable
+      - name: Ensure deploy.sh is executable
         run: |
           if [ ! -x ./deploy.sh ]; then
-            echo "❌ ERROR: deploy.sh is not executable (missing +x)."
+            echo "❌ deploy.sh is not executable."
             exit 1
           else
-            echo "✅ deploy.sh has correct permissions."
+            echo "✅ deploy.sh has +x. All good."
           fi
