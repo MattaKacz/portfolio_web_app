@@ -19,4 +19,7 @@ npm run build
 echo "🚀 Restarting PM2 process..."
 pm2 restart nextjs-app
 
+echo "♻️ Reloading NGINX..."
+sudo nginx -t && sudo systemctl reload nginx
+
 echo "✅ Deployment completed successfully!"
