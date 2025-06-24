@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { TypeAnimation } from 'react-type-animation';
+import Link from 'next/link';
 
 const HeroSection = () => {
 	return (
@@ -33,15 +34,20 @@ const HeroSection = () => {
 						I'm a software developer. Lorem ipsum dolor sit, amet consectetur
 						adipisicing elit.
 					</p>
-					<div className='flex flex-col sm:flex-row gap-4 mb-6'>
-						<button className='px-6 py-3 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white'>
+					<div className='flex flex-col sm:flex-row gap-4 mb-6 w-full sm:w-auto'>
+						<Link
+							href='#contact'
+							className='w-full sm:w-auto px-6 py-3 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-200 text-white text-center'>
 							Hire Me
-						</button>
-						<button className='px-1 py-1 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-800 text-white'>
-							<span className='block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2'>
+						</Link>
+						<a
+							href='/Mateusz Kaczor - resume - 2025.pdf'
+							download
+							className='w-full sm:w-auto px-1 py-1 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 hover:bg-slate-800 text-white'>
+							<span className='block bg-[#121212] hover:bg-slate-800 rounded-full px-5 py-2 text-center'>
 								Download CV
 							</span>
-						</button>
+						</a>
 					</div>
 				</div>
 				<div className='flex-1 flex justify-center mt-6 lg:mt-0'>
