@@ -1,29 +1,41 @@
 #!/bin/bash
+set -e  # zakończ skrypt przy pierwszym błędzie
 
-set -e
-
+# 🔧 KONFIGURACJA
 APP_DIR="/var/www/website_www_portfolio/portfolio_web_app"
+PM2_NAME="nextjs-app"
+LOG_FILE="$APP_DIR/deploy.log"
 
-echo "📁 Moving to project directory: $APP_DIR"
+# 🕓 Timestamp logu
+timestamp=$(date '+%Y-%m-%d %H:%M:%S')
+
+echo "[$timestamp] 🚀 Starting deployment..." | tee -a "$LOG_FILE"
+
+# 🧭 Przejdź do katalogu aplikacji
 cd "$APP_DIR"
 
-echo "🧹 Cleaning up local changes..."
+# 🔐 Upewnij się, że deploy.sh jest wykonalny
+chmod +x ./deploy.sh
+
+# 🧹 Wyczyść lokalne zmiany (żeby pull nie wybuchł)
 git reset --hard
 git clean -fd
 
-echo "🔄 Pulling latest code from Git..."
+# ⬇️ Pobierz najnowszy kod z Git
+echo "[$timestamp] 🔄 Pulling from Git..." | tee -a "$LOG_FILE"
 git pull origin main
 
-echo "📦 Installing dependencies..."
+# 📦 Zainstaluj zależności
+echo "[$timestamp] 📦 Installing dependencies..." | tee -a "$LOG_FILE"
 npm install
 
-echo "🛠️ Building the Next.js app..."
+# 🛠 Zbuduj aplikację
+echo "[$timestamp] 🏗 Building project..." | tee -a "$LOG_FILE"
 npm run build
 
-echo "🚀 Restarting PM2 process..."
-pm2 restart nextjs-app
+# 🔁 Restartuj aplikację w PM2
+echo "[$timestamp] ♻️ Restarting PM2 process..." | tee -a "$LOG_FILE"
+pm2 restart "$PM2_NAME"
 
-echo "♻️ Reloading NGINX..."
-sudo nginx -t && sudo systemctl reload nginx
-
-echo "✅ Deployment completed successfully!"
+# ✅ Gotowe
+echo "[$timestamp] ✅ Deployment finished successfully!" | tee -a "$LOG_FILE"
