@@ -9,7 +9,7 @@ const TAB_DATA = [
 		id: 'skills',
 		content: (
 			<ul className='list-disc pl-5 space-y-2'>
-				<li>Python, Django, FastAPI</li>
+				<li>Snake, Python, Django, FastAPI</li>
 				<li>PostgreSQL, MySQL</li>
 				<li>GitHub Actions, Pytest</li>
 				<li>Docker, Nginx, Gunicorn</li>
