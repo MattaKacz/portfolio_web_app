@@ -28,6 +28,74 @@ body {
 	}
 }
 
+@keyframes shimmer {
+	0% {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.2;
+	}
+	100% {
+		transform: translateX(100%);
+		opacity: 0;
+	}
+}
+
+.animate-shimmer {
+	animation: shimmer 2.5s infinite;
+}
+
+@keyframes shine {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+.card-shine {
+	position: relative;
+	overflow: hidden;
+}
+
+.card-shine::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -75%;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+	animation: shine 2s infinite;
+}
+
+@keyframes sweep-slow {
+	0% {
+		transform: translateX(-100%);
+		opacity: 0;
+	}
+	20% {
+		opacity: 0.6;
+	}
+	50% {
+		transform: translateX(100%);
+		opacity: 0.2;
+	}
+	80% {
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(200%);
+		opacity: 0;
+	}
+}
+
+.animate-sweep-slow {
+	animation: sweep-slow 4s ease-in-out infinite;
+}
+
 body {
 	background: var(--background);
 	color: var(--foreground);

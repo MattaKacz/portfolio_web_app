@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import ProjectCard from './ProjectCard';
 import ProjectTag from './ProjectTag';
+import ProjectModal from './ProjectModal';
 
 const projectsData = [
 	{
@@ -28,18 +29,25 @@ const projectsData = [
 		tag: ['All', 'Web', 'Django'],
 		gitUrl: '/',
 	},
+	{
+		id: 4,
+		title: 'Project Three',
+		description: 'Description of project three.',
+		image: '/images/projects/project3.png',
+		tag: ['All', 'Web', 'Django'],
+		gitUrl: '/',
+	},
 ];
 
 const ProjectsSection = () => {
 	const [tag, setTag] = useState('All');
+	const [selectedProject, setSelectedProject] = useState(null);
 
 	const handleTagChange = (newTag) => {
 		setTag(newTag);
 	};
 
-	const filteredProjects = projectsData.filter((project) => 
-		project.tag.includes(tag)
-	);
+	const filteredProjects = projectsData.filter((project) => project.tag.includes(tag));
 
 	return (
 		<section id='projects'>
@@ -51,9 +59,10 @@ const ProjectsSection = () => {
 			</div>
 			<div className='grid md:grid-cols-3 gap-8 md:gap-12'>
 				{filteredProjects.map((project) => (
-					<ProjectCard key={project.id} title={project.title} description={project.description} imgUrl={project.image} gitUrl={project.gitUrl} />
+					<ProjectCard key={project.id} title={project.title} description={project.description} imgUrl={project.image} gitUrl={project.gitUrl} onClick={() => setSelectedProject(project)} />
 				))}
 			</div>
+			<ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
 		</section>
 	);
 };
