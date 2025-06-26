@@ -12,11 +12,13 @@ export default function Home() {
 		<main className='relative z-10 flex min-h-screen flex-col'>
 			{/* <VantaBackground /> */}
 			<Navbar />
+			
 			<div className='container mt-24 mx-auto px-12 py-4'>
 				<HeroSection />
 				<AboutSection />
 				<ProjectsSection />
 				<EmailSection />
+				
 			</div>
 			<Footer />
 		</main>

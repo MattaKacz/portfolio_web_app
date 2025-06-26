@@ -47,22 +47,50 @@ const ProjectsSection = () => {
 		setTag(newTag);
 	};
 
-	const filteredProjects = projectsData.filter((project) => project.tag.includes(tag));
+	const filteredProjects = projectsData.filter((project) =>
+		project.tag.includes(tag)
+	);
 
 	return (
-		<section id='projects'>
-			<h2 className='text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12'>My Projects</h2>
-			<div className='text-white flex flex-row justify-center items-center gap-2 py-6'>
-				<ProjectTag onClick={handleTagChange} name='All' isSelected={tag === 'All'} />
-				<ProjectTag onClick={handleTagChange} name='Python' isSelected={tag === 'Python'} />
-				<ProjectTag onClick={handleTagChange} name='Web' isSelected={tag === 'Web'} />
+		<section id='projects' className='my-12'>
+			<div className='bg-[#1A1A1A]/60 rounded-2xl p-6 shadow-lg shadow-purple-900/20'>
+				<h2 className='text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12'>
+					My Projects
+				</h2>
+				<div className='text-white flex flex-row justify-center items-center gap-2 py-6'>
+					<ProjectTag
+						onClick={handleTagChange}
+						name='All'
+						isSelected={tag === 'All'}
+					/>
+					<ProjectTag
+						onClick={handleTagChange}
+						name='Python'
+						isSelected={tag === 'Python'}
+					/>
+					<ProjectTag
+						onClick={handleTagChange}
+						name='Web'
+						isSelected={tag === 'Web'}
+					/>
+				</div>
+				<div className='grid md:grid-cols-3 gap-8 md:gap-12'>
+					{filteredProjects.map((project) => (
+						<ProjectCard
+							key={project.id}
+							title={project.title}
+							description={project.description}
+							imgUrl={project.image}
+							gitUrl={project.gitUrl}
+							onClick={() => setSelectedProject(project)}
+						/>
+					))}
+				</div>
 			</div>
-			<div className='grid md:grid-cols-3 gap-8 md:gap-12'>
-				{filteredProjects.map((project) => (
-					<ProjectCard key={project.id} title={project.title} description={project.description} imgUrl={project.image} gitUrl={project.gitUrl} onClick={() => setSelectedProject(project)} />
-				))}
-			</div>
-			<ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+			<ProjectModal
+				project={selectedProject}
+				onClose={() => setSelectedProject(null)}
+			/>
 		</section>
 	);
 };
