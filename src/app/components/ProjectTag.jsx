@@ -8,9 +8,10 @@ function ProjectTag({ name, onClick, isSelected }) {
 
 	return (
 		<button
-			className={`${baseStyles} ${isSelected ? activeStyles : inactiveStyles}`}
+			className={`${baseStyles} ${isSelected ? activeStyles : inactiveStyles} flex items-center justify-center text-center whitespace-nowrap min-w-[80px]`}
 			aria-pressed={isSelected}
-			onClick={() => onClick(name)}>
+			onClick={() => onClick(name)}
+		>
 			<span className='relative z-10'>{name}</span>
 			<span className='absolute inset-0 animate-sweep-glass pointer-events-none z-0 before:absolute before:inset-0 before:rounded-full before:bg-white/30 before:blur-md before:opacity-1' />
 		</button>
