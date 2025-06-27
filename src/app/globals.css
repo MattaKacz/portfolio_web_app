@@ -28,6 +28,20 @@ body {
 	}
 }
 
+@keyframes glass-shimmer {
+  0% {
+    transform: translateX(-100%) rotate(6deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(6deg);
+  }
+}
+
+.animate-glass-shimmer {
+  animation: glass-shimmer 2s infinite linear;
+}
+
+
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
