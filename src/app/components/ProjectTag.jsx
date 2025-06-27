@@ -21,8 +21,8 @@ function ProjectTag({ name, onClick, isSelected }) {
 
 			{/* Warstwa shimmer */}
 			<span className="absolute inset-0 z-0 pointer-events-none">
-				<span className="absolute left-[-75%] top-0 h-full w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer" />
-			</span>
+  <span className="absolute inset-0 -translate-x-full rotate-6 bg-gradient-to-r from-transparent via-white/15 to-transparent animate-glass-shimmer" />
+</span>
 
 			{/* Obrys dla pełnego efektu szkła */}
 			<span className="absolute inset-0 rounded-xl ring-1 ring-white/10" />
