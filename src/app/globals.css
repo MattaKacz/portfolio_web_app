@@ -29,30 +29,29 @@ body {
 }
 
 @keyframes glass-shimmer {
-  0% {
-    transform: translateX(-100%) rotate(6deg);
-  }
-  100% {
-    transform: translateX(100%) rotate(6deg);
-  }
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(100%);
+	}
 }
 
 .animate-glass-shimmer {
-  animation: glass-shimmer 2s infinite linear;
+	animation: glass-shimmer 3.5s infinite linear;
 }
 
-
 @keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(200%);
-  }
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(200%);
+	}
 }
 
 .animate-shimmer {
-  animation: shimmer 2s infinite linear;
+	animation: shimmer 2s infinite linear;
 }
 
 @keyframes shine {
