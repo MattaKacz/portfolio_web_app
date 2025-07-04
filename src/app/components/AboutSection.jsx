@@ -2,6 +2,7 @@
 import React, { useTransition, useState } from 'react';
 import Image from 'next/image';
 import TabButton from './TabButton';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const TAB_DATA = [
 	{
@@ -52,7 +53,7 @@ const AboutSection = () => {
 
 	return (
 		<section id='about' className='text-white'>
-			<div className='gap-8 items-center py-8 px-4 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 xl:px-16 '>
+			<div className='gap-8 items-start py-8 px-4 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 xl:px-16 '>
 				<Image
 					src='/images/image_about.png'
 					alt="Hello I'm Matt"
@@ -65,29 +66,49 @@ const AboutSection = () => {
 					<h2 className='text-3xl font-bold mb-6 text-white'>About Me</h2>
 
 					<p className='text-sm md:text-base leading-relaxed mb-4'>
-						I’m a backend developer specializing in Python, Django, and FastAPI, with a strong focus on building scalable APIs,
-						test automation, and AI-enhanced solutions. Currently based in Australia on a post-study visa, I’m open to full-time
-						opportunities and sponsorship.
+						I’m a backend developer specializing in Python, Django, and FastAPI,
+						with a strong focus on building scalable APIs, test automation, and
+						AI-enhanced solutions. Currently based in Australia on a post-study
+						visa, I’m open to full-time opportunities and sponsorship.
 					</p>
 
 					<p className='text-sm md:text-base leading-relaxed mb-6'>
-						I thrive on turning complex challenges into elegant code, and I bring a proactive, solution-oriented mindset to every
-						project. Beyond coding, I enjoy working on real-world applications that make a tangible impact.
+						I thrive on turning complex challenges into elegant code, and I
+						bring a proactive, solution-oriented mindset to every project.
+						Beyond coding, I enjoy working on real-world applications that make
+						a tangible impact.
 					</p>
 
 					<div className='flex flex-wrap gap-2 justify-start mt-8'>
-						<TabButton selectTab={() => handleTabChange('skills')} active={tab === 'skills'}>
+						<TabButton
+							selectTab={() => handleTabChange('skills')}
+							active={tab === 'skills'}>
 							<span className='text-sm sm:text-base'>Skills</span>
 						</TabButton>
-						<TabButton selectTab={() => handleTabChange('education')} active={tab === 'education'}>
+						<TabButton
+							selectTab={() => handleTabChange('education')}
+							active={tab === 'education'}>
 							<span className='text-sm sm:text-base'>Education</span>
 						</TabButton>
-						<TabButton selectTab={() => handleTabChange('certifications')} active={tab === 'certifications'}>
+						<TabButton
+							selectTab={() => handleTabChange('certifications')}
+							active={tab === 'certifications'}>
 							<span className='text-sm sm:text-base'>Certifications</span>
 						</TabButton>
 					</div>
 
-					<div className='mt-8'>{TAB_DATA.find((t) => t.id === tab).content}</div>
+					<div className='mt-8 min-h-[150px] md:min-h-[180px] transition-all duration-500'>
+						<AnimatePresence mode='wait'>
+							<motion.div
+								key={tab}
+								initial={{ opacity: 0, y: 10 }}
+								animate={{ opacity: 1, y: 0 }}
+								exit={{ opacity: 0, y: -10 }}
+								transition={{ duration: 0.4, ease: 'easeOut' }}>
+								{TAB_DATA.find((t) => t.id === tab).content}
+							</motion.div>
+						</AnimatePresence>
+					</div>
 				</div>
 			</div>
 		</section>

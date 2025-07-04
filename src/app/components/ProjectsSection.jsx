@@ -26,8 +26,8 @@ const projectsData = [
 		title: 'Project Three',
 		description: 'Description of project three.',
 		image: '/images/projects/project3.png',
-		tag: ['All', 'Web', 'Django'],
-		gitUrl: '/',
+		tag: ['All', 'Web', 'React', 'Next.js'],
+		gitUrl: 'https://github.com/MattaKacz/portfolio_web_app',
 	},
 	{
 		id: 4,

@@ -14,25 +14,24 @@ function ProjectTag({ name, onClick, isSelected }) {
 		<button
 			className={`${baseStyles} ${isSelected ? activeStyles : inactiveStyles}`}
 			aria-pressed={isSelected}
-			onClick={() => onClick(name)}
-		>
+			onClick={() => onClick(name)}>
 			{/* Tekst */}
-			<span className="relative z-10 font-satoshi">{name}</span>
+			<span className='relative z-10 font-satoshi'>{name}</span>
 
 			{/* Shimmer tylko dla aktywnego */}
 			{isSelected && (
-				<span className="absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-full">
-					<span className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm animate-glass-shimmer" />
+				<span className='absolute inset-0 z-0 pointer-events-none overflow-hidden rounded-full'>
+					<span className='absolute top-0 left-0 h-full w-full bg-gradient-to-r from-transparent via-white/10 to-transparent blur-sm animate-glass-shimmer' />
 				</span>
 			)}
 
 			{/* Miękki fioletowy glow dla aktywnego */}
 			{isSelected && (
-				<span className="absolute inset-0 rounded-full ring-2 ring-purple-400/40 pointer-events-none" />
+				<span className='absolute inset-0 rounded-full ring-2 ring-purple-400/40 pointer-events-none' />
 			)}
 
 			{/* Stały ring dla wszystkich */}
-			<span className="absolute inset-0 rounded-full ring-1 ring-white/5 pointer-events-none" />
+			<span className='absolute inset-0 rounded-full ring-1 ring-white/5 pointer-events-none' />
 		</button>
 	);
 }
