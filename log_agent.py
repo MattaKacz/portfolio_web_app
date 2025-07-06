@@ -2,11 +2,10 @@ import os
 import time
 import argparse
 import requests
-import json
 from datetime import datetime
 
 LOG_DIR = "./logs"  # directory with logs to monitor (locally)
-DASHBOARD_API = "http://127.0.0.1:8000/analyze"  # test endpoint
+DASHBOARD_API = "http://127.0.0.1:8000/logs_sql"  # correct endpoint for log file upload
 TOKEN = os.environ.get("DASHBOARD_TOKEN")
 # ERROR_KEYWORDS are no longer needed since we only read errors.log
 OFFSET_DIR = os.path.join(LOG_DIR, ".offsets")  # directory for offsets
@@ -28,42 +27,24 @@ def extract_new_errors(filepath, offset_path):
         f.write(str(new_offset))
     return "".join(new_lines)
 
-def parse_json_logs(log_content):
-    """Parse JSON lines format and extract structured error data"""
-    errors = []
-    for line in log_content.strip().split('\n'):
-        if line.strip():
-            try:
-                log_entry = json.loads(line)
-                if log_entry.get('level') == 'error':
-                    errors.append(log_entry)
-            except json.JSONDecodeError:
-                # Fallback for non-JSON lines
-                continue
-    return errors
-
 def send_log(log_content, filename):
     if not log_content.strip():
         print(f"[{filename}] No new errors found in errors.log, skipping.")
         return
     
-    # Parse JSON logs for better analysis
-    parsed_errors = parse_json_logs(log_content)
-    
     try:
+        # Send log file to dashboard using LogFile-Input format
         payload = {
             "filename": filename,
             "size": len(log_content),
             "upload_time": datetime.now().isoformat(),
             "log_count": log_content.count('\n'),
+            "content": log_content,  # Raw log content
             "log_analysis_status": "pending",
-            "analysis_result": None,
-            "content": log_content,  # Add this field to the LogFile model in the backend!
-            "parsed_errors": parsed_errors,  # Structured error data for dashboard
-            "error_count": len(parsed_errors)
+            "analysis_result": None
         }
         response = requests.post(
-            "http://127.0.0.1:8000/logs_sql",
+            DASHBOARD_API,
             headers={
                 "Content-Type": "application/json",
                 "Authorization": f"Bearer {TOKEN}" if TOKEN else "",

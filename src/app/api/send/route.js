@@ -19,7 +19,7 @@ export async function POST(req, res) {
 
 	try {
 		// Remove test error - uncomment for testing
-		// throw new Error('Test error for logger!');
+		throw new Error('Test error for logger!');
 
 		const data = await resend.emails.send({
 			from: fromEmail,
