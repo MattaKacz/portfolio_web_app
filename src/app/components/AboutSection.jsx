@@ -66,10 +66,10 @@ const AboutSection = () => {
 					<h2 className='text-3xl font-bold mb-6 text-white'>About Me</h2>
 
 					<p className='text-sm md:text-base leading-relaxed mb-4'>
-						I’m a backend developer specializing in Python, Django, and FastAPI,
+						I'm a backend developer specializing in Python, Django, and FastAPI,
 						with a strong focus on building scalable APIs, test automation, and
 						AI-enhanced solutions. Currently based in Australia on a post-study
-						visa, I’m open to full-time opportunities and sponsorship.
+						visa, I'm open to full-time opportunities and sponsorship.
 					</p>
 
 					<p className='text-sm md:text-base leading-relaxed mb-6'>
