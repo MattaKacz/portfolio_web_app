@@ -26,17 +26,29 @@ const Navbar = () => {
 	return (
 		<nav className='fixed top-0 left-0 right-0 z-10 bg-[#121212] opacity-100 '>
 			<div className='flex flex-wrap items-center justify-between mx-auto px-4'>
-				<Link href={'/'} className='text-lg md:text-5xl text-white font-semibold'>
-					<Image src='/images/image_logo.png' alt='logo' width={150} height={150} className='object-contain' />
+				<Link
+					href={'/'}
+					className='text-lg md:text-5xl text-white font-semibold'>
+					<Image
+						src='/images/image_logo.png'
+						alt='logo'
+						width={150}
+						height={150}
+						className='object-contain'
+					/>
 				</Link>
 
 				<div className='mobile-menu block md:hidden'>
 					{!navbarOpen ? (
-						<button onClick={() => setNavbarOpen(true)} className='flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white '>
+						<button
+							onClick={() => setNavbarOpen(true)}
+							className='flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white '>
 							<Bars3Icon className='h-5 w-5' />
 						</button>
 					) : (
-						<button onClick={() => setNavbarOpen(false)} className='flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white '>
+						<button
+							onClick={() => setNavbarOpen(false)}
+							className='flex items-center px-3 py-2 border rounded border-slate-200 text-slate-200 hover:text-white hover:border-white '>
 							<XMarkIcon className='h-5 w-5' />
 						</button>
 					)}
@@ -52,7 +64,11 @@ const Navbar = () => {
 				</div>
 			</div>
 			{/* {navbarOpen ? <MenuOverlay links={navLinks} /> : null} */}
-			<MenuOverlay links={navLinks} isOpen={navbarOpen} onClose={() => setNavbarOpen(false)} />
+			<MenuOverlay
+				links={navLinks}
+				isOpen={navbarOpen}
+				onClose={() => setNavbarOpen(false)}
+			/>
 		</nav>
 	);
 };

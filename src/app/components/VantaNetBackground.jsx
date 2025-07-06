@@ -15,20 +15,17 @@ const VantaNetBackground = () => {
 			const newEffect = NET({
 				el: vantaRef.current,
 				THREE,
-				color: 0xff00ff, // główny kolor siatki
-				backgroundColor: 0x0a0a23, // kolor tła (ciemny fiolet)
-				// maxDistance: 20.0, // długość linii
-				// spacing: 18.0, // odstęp między punktami
-				// points: 10.0, // liczba punktów (może nie działa tu, ale spacing działa)
-				maxDistance: 15.0, // krótsze linie
-				spacing: 15.0, // mniej linii = bardziej przejrzyste
+				color: 0xff00ff,
+				backgroundColor: 0x0a0a23,
+				maxDistance: 15.0,
+				spacing: 15.0,
 				scale: 1.0,
 				scaleMobile: 2.5,
 				forceAnimate: true,
 			});
 
 			setEffect(newEffect);
-			window.dispatchEvent(new Event('resize')); // wymusza przeliczenie canvasu
+			window.dispatchEvent(new Event('resize'));
 		};
 
 		loadEffect();
@@ -44,7 +41,7 @@ const VantaNetBackground = () => {
 			className='fixed top-0 left-0 w-screen h-screen z-0'
 			style={{
 				pointerEvents: 'none',
-				transform: 'translateZ(0)', // wymusza akcelerację GPU
+				transform: 'translateZ(0)',
 			}}
 		/>
 	);

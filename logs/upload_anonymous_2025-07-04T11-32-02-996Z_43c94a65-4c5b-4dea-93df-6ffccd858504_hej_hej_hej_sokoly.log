@@ -1,0 +1,9 @@
+2025-07-03 10:00:01 INFO Application starting up
+2025-07-03 10:00:02 INFO Database connection established
+2025-07-03 10:00:03 INFO Server listening on port 8000
+2025-07-03 10:01:15 ERROR Database connection failed. Connection timeout after 30 seconds.
+2025-07-03 10:01:16 WARNING Retrying database connection...
+2025-07-03 10:01:17 ERROR Database connection failed again. Host: db.example.com, Port: 5432
+2025-07-03 10:01:18 INFO Application shutting down due to database issues
+2025-07-03 10:02:00 FATAL Out of memory error. Java heap space exhausted.
+2025-07-03 10:02:01 INFO Process terminated 
