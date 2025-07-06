@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import VantaBackground from '../components/VantaBackground';
+import ErrorBoundary from './components/ErrorBoundary';
+import GlobalErrorHandler from './components/GlobalErrorHandler';
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -14,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata = {
 	title: 'Matt Kaczor | Backend Developer',
-	description: 'Portfolio site of Matt Kaczor – Python, Django, FastAPI developer with a focus on AI-powered backends.',
+	description:
+		'Portfolio site of Matt Kaczor – Python, Django, FastAPI developer with a focus on AI-powered backends.',
 };
 
 export default function RootLayout({ children }) {
@@ -23,7 +26,10 @@ export default function RootLayout({ children }) {
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<VantaBackground />
-				<main className='relative z-10'>{children}</main>
+				<GlobalErrorHandler />
+				<ErrorBoundary>
+					<main className='relative z-10'>{children}</main>
+				</ErrorBoundary>
 			</body>
 		</html>
 	);

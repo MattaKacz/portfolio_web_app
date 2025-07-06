@@ -23,9 +23,9 @@ const VantaBackground = () => {
 							minWidth: 200.0,
 							scale: 1.0,
 							scaleMobile: 1.0,
-							color1: 0x9c19b6, // pierwszy kolor
-							color2: 0x401aa4, // drugi kolor
-							size: 1.2, // rozmiar komórek
+							color1: 0x9c19b6, // primary color
+							color2: 0x401aa4, // secondary color
+							size: 1.2, // cell size
 							backgroundColor: 0x0f002f,
 							forceAnimate: true,
 						});

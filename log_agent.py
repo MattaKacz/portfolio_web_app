@@ -4,11 +4,11 @@ import argparse
 import requests
 from datetime import datetime
 
-LOG_DIR = "./logs"  # katalog z logami do monitorowania (lokalnie)
-DASHBOARD_API = "http://127.0.0.1:8000/analyze"  # testowy endpoint
+LOG_DIR = "./logs"  # directory with logs to monitor (locally)
+DASHBOARD_API = "http://127.0.0.1:8000/logs_sql"  # correct endpoint for log file upload
 TOKEN = os.environ.get("DASHBOARD_TOKEN")
-# ERROR_KEYWORDS nie są już potrzebne, bo czytamy tylko errors.log
-OFFSET_DIR = os.path.join(LOG_DIR, ".offsets")  # katalog na offsety
+# ERROR_KEYWORDS are no longer needed since we only read errors.log
+OFFSET_DIR = os.path.join(LOG_DIR, ".offsets")  # directory for offsets
 
 os.makedirs(OFFSET_DIR, exist_ok=True)
 
@@ -21,8 +21,8 @@ def extract_new_errors(filepath, offset_path):
         f.seek(last_offset)
         new_lines = f.readlines()
         new_offset = f.tell()
-    # W errors.log wszystkie linie to błędy, więc nie filtrujemy
-    # Zapisz nowy offset
+    # In errors.log all lines are errors, so we don't filter
+    # Save new offset
     with open(offset_path, "w") as f:
         f.write(str(new_offset))
     return "".join(new_lines)
@@ -31,18 +31,20 @@ def send_log(log_content, filename):
     if not log_content.strip():
         print(f"[{filename}] No new errors found in errors.log, skipping.")
         return
+    
     try:
+        # Send log file to dashboard using LogFile-Input format
         payload = {
             "filename": filename,
             "size": len(log_content),
             "upload_time": datetime.now().isoformat(),
             "log_count": log_content.count('\n'),
+            "content": log_content,  # Raw log content
             "log_analysis_status": "pending",
-            "analysis_result": None,
-            "content": log_content  # Dodaj to pole do modelu LogFile w backendzie!
+            "analysis_result": None
         }
         response = requests.post(
-            "http://127.0.0.1:8000/logs_sql",
+            DASHBOARD_API,
             headers={
                 "Content-Type": "application/json",
                 "Authorization": f"Bearer {TOKEN}" if TOKEN else "",
@@ -57,7 +59,7 @@ def send_log(log_content, filename):
         print(f"[{filename}] ERROR sending log: {e}")
 
 def process_all_logs():
-    # Wysyłaj tylko logi z errors.log
+    # Send only logs from errors.log
     errors_log_path = os.path.join(LOG_DIR, "errors.log")
     if os.path.exists(errors_log_path):
         offset_path = os.path.join(OFFSET_DIR, "errors.log.offset")
