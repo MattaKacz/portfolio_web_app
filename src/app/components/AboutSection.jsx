@@ -10,11 +10,34 @@ const TAB_DATA = [
 		id: 'skills',
 		content: (
 			<ul className='list-disc pl-5 space-y-2'>
-				<li>Snake, Python, Django, FastAPI</li>
-				<li>PostgreSQL, MySQL</li>
-				<li>GitHub Actions, Pytest</li>
-				<li>Docker, Nginx, Gunicorn</li>
-				<li>LLMs, LangChain, Vector Databases</li>
+				<li>
+					<strong>Backend:</strong> Python (3.x), Django, FastAPI, REST APIs
+				</li>
+				<li>
+					<strong>Frontend & Scripting:</strong> HTML/CSS, Bash, Shell scripting
+				</li>
+				<li>
+					<strong>Test Automation:</strong> Pytest, Playwright, Selenium,
+					Unittest, TDD
+				</li>
+				<li>
+					<strong>DevOps & CI/CD:</strong> GitHub Actions, Jenkins, Docker, Git
+				</li>
+				<li>
+					<strong>Databases & Data:</strong> MySQL, MongoDB, SQLite, Pandas,
+					NumPy
+				</li>
+				<li>
+					<strong>Cloud & Infrastructure:</strong> AWS (EC2, S3), Linux (Ubuntu,
+					Debian), Nginx
+				</li>
+				<li>
+					<strong>AI & LLMs:</strong> GPT-4, OpenAI API, LangChain, Vector DBs
+					(Pinecone, FAISS)
+				</li>
+				<li>
+					<strong>Workflow:</strong> Agile/Scrum, JIRA, Peer Reviews, Mentoring
+				</li>
 			</ul>
 		),
 	},
