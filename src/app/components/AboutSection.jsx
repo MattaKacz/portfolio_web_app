@@ -46,8 +46,15 @@ const TAB_DATA = [
 		id: 'education',
 		content: (
 			<ul className='list-disc pl-5 space-y-2'>
-				<li>Bachelor of Computer Science, University of Technology Sydney</li>
-				<li>Master of Software Engineering, University of Melbourne</li>
+				<li>
+					BSc in Electronics, Wrocław University of Science and Technology,
+					Poland (2018)
+				</li>
+				<li>
+					Engineering Thesis: "Development of an Independent Microenvironment
+					System" (2018)
+				</li>
+				<li>AI_DEVS – Advanced Practical AI for Developers (2025)</li>
 			</ul>
 		),
 	},
@@ -56,9 +63,10 @@ const TAB_DATA = [
 		id: 'certifications',
 		content: (
 			<ul className='list-disc pl-5 space-y-2'>
+				<li>ISTQB Certified Tester Foundation Level</li>
+				<li>AI_DEVS Advanced AI Agent Certificate (2025)</li>
 				<li>Certified Python Developer</li>
-				<li>FastAPI Mastery Certification</li>
-				<li>Docker Certified Associate</li>
+				<li>Python for Data Analysis Certificate</li>
 			</ul>
 		),
 	},
