@@ -53,7 +53,7 @@ const AboutSection = () => {
 
 	return (
 		<section id='about' className='text-white'>
-			<div className='gap-8 items-start py-8 px-4 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 xl:px-16 '>
+			<div className='container mx-auto gap-8 items-start py-8 px-4 xl:gap-16 md:grid md:grid-cols-2 sm:py-16 xl:px-16 '>
 				<Image
 					src='/images/image_about.png'
 					alt="Hello I'm Matt"
@@ -62,7 +62,7 @@ const AboutSection = () => {
 					quality={100}
 					className='rounded-2xl shadow-lg shadow-purple-700/30 border border-purple-900/50 transition duration-300 hover:scale-105'
 				/>
-				<div className='mt-4 md:mt-0 text-left flex flex-col h-full bg-[#1A1A1A]/60 p-6 md:p-8 rounded-xl shadow-lg shadow-purple-900/20 backdrop-blur-md max-w-prose text-gray-300'>
+				<div className='mt-4 md:mt-0 text-left flex flex-col h-full bg-[#1A1A1A]/60 p-6 md:p-8 rounded-xl shadow-lg shadow-purple-900/20 backdrop-blur-md text-gray-300'>
 					<h2 className='text-3xl font-bold mb-6 text-white'>About Me</h2>
 
 					<p className='text-sm md:text-base leading-relaxed mb-4'>
