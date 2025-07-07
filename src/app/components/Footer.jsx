@@ -13,6 +13,7 @@ const Footer = () => {
 						alt='logo'
 						width={150}
 						height={150}
+						style={{ width: 'auto', height: 'auto' }}
 						className='object-contain'
 					/>
 				</Link>
